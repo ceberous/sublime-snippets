@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+let PersonalFilePath = null;
+let Personal = null
+try{
+    PersonalFilePath = path.join( process.env.HOME , ".config" , "personal" , "EXAMPLE.js" );
+    console.log( PersonalFilePath );
+    Personal = require( PersonalFilePath );
+}
+catch( error ) { console.log( "Couldn't Locate Config File" ); process.exit( 1 ); }
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jsConfig</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

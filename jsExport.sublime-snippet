@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+function BLAH(  ) {
+    return new Promise( async function( resolve , reject ) {
+        try {
+            resolve(  );
+            return;
+        };
+        catch( error ) { console.log( error ); reject( error ); return error; }
+    };
+}
+module.exports.blah = BLAH;
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jsexport</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

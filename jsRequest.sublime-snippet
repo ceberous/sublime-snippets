@@ -1,0 +1,29 @@
+<snippet>
+    <content><![CDATA[
+const request = require( "request" );
+function MAKE_REQUEST( wURL ) {
+    return new Promise( function( resolve , reject ) {
+        try {
+            request( { url: wURL , headers: { "Cache-Control": "private, no-store, max-age=0" } } , function ( err , response , body ) {
+                if ( err ) { resolve( false ); return; }
+                console.log( wURL + "\n\t--> RESPONSE_CODE = " + response.statusCode.toString() );
+                if ( response.statusCode !== 200 ) {
+                    //console.log( "bad status code ... " );
+                    resolve( false );
+                    return;
+                }
+                else {
+                    resolve( body );
+                    return;
+                }
+            });
+        }
+        catch( error ) { console.log( error ); reject( error ); }
+    });
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jsRequest</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+function sleep( ms ) { return new Promise( resolve => setTimeout( resolve , ms ) ); }
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jsSleep</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

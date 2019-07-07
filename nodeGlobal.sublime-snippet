@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+const process = require("process");
+const path = require("path");
+const child = require("child_process");
+const global_package_path = child.spawnSync( 'npm', [ 'root' , '-g' ] , { encoding: 'utf8' } ).stdout.trim();
+//const import = require( path.join( global_package_path ,  "import-package-name" ) );
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>nodeGlobal</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

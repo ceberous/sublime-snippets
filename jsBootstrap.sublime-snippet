@@ -1,0 +1,57 @@
+<snippet>
+    <content><![CDATA[
+const process = require("process");
+const path = require("path");
+const child = require("child_process");
+
+process.on( "unhandledRejection" , function( reason , p ) {
+    console.error( reason, "Unhandled Rejection at Promise" , p );
+    console.trace();
+});
+process.on( "uncaughtException" , function( err ) {
+    console.error( err , "Uncaught Exception thrown" );
+    console.trace();
+});
+
+const request = require( "request" ) );
+function MAKE_REQUEST( wURL ) {
+    return new Promise( function( resolve , reject ) {
+        try {
+            request( { url: wURL , headers: { "Cache-Control": "private, no-store, max-age=0" } } , function ( err , response , body ) {
+                if ( err ) { resolve( false ); return; }
+                console.log( wURL + "\n\t--> RESPONSE_CODE = " + response.statusCode.toString() );
+                if ( response.statusCode !== 200 ) {
+                    //console.log( "bad status code ... " );
+                    resolve( false );
+                    return;
+                }
+                else {
+                    resolve( body );
+                    return;
+                }
+            });
+        }
+        catch( error ) { console.log( error ); reject( error ); }
+    });
+}
+
+async function PROMISE_ALL() {
+    try {
+        const a = MAKE_REQUEST( "https://swapi.co/api/people/1" );
+        const b = MAKE_REQUEST( "https://swapi.co/api/people/1" );
+        const results = await Promise.all( [ a , b ] );
+        return results;
+    }
+    catch( error ) { console.log( error ); return false; }
+}
+
+( async ()=> {
+    let results = await PROMISE_ALL();
+    console.log( results );
+})();
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jsBootstrap</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+process.on( "unhandledRejection" , function( reason , p ) {
+    console.error( reason, "Unhandled Rejection at Promise" , p );
+    console.trace();
+});
+process.on( "uncaughtException" , function( err ) {
+    console.error( err , "Uncaught Exception thrown" );
+    console.trace();
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jserror</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>
